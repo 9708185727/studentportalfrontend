@@ -25,6 +25,10 @@ const SignUp = () => {
   
   const submit = (data) => {
     dispatch(registerUser(data));
+    toast("Successfully register",{
+      type:"success"
+    })
+    reset();
   };
 
   useEffect(() => {

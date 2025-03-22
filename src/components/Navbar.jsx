@@ -12,9 +12,9 @@ import { useSelector } from "react-redux";
 const Navbar = ({ isOpen, setOpen }) => {
   const { user } = useSelector((state) => state.auth);
   const [isProfileOpen, setProfileOpen] = useState(false);
-console.log(user)
+  console.log(user)
   return (
-    <nav className="bg-sky-400 sticky top-0 z-50 opacity-95 py-1 px-5 text-white flex justify-between items-center">
+    <nav className="bg-sky-400 sticky top-0 z-50 opacity-95 py-1 px-11 text-white flex justify-between items-center">
       <div className="flex flex-row items-center justify-between w-60">
         <button onClick={() => setOpen(!isOpen)}>
           {isOpen ? <MdLineWeight className="text-3xl" /> : <RxCross2 className="text-2xl" />}
@@ -41,7 +41,7 @@ console.log(user)
       {user && (
         <div className="flex gap-x-4">
           {/* Show SignUp link only for ADMIN */}
-         {user && user._doc.roles.includes('ADMIN') && (
+         {user && user._doc?.roles.includes('ADMIN') && (
   <h1>
     <NavLink to={REGISTER_ROUTE}>SignUp</NavLink>
   </h1>

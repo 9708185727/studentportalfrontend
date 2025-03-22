@@ -45,11 +45,11 @@ const [showPassword,setShowPassword]=useState(false)
             Welcome to the Sign Up
           </h2>
           <input
-            type="email"
-            {...register("email")}
+            type="number"
+            {...register("phone")}
             className="border outline-none px-3 py-3 rounded-lg w-sm"
-            autoComplete="current-email"
-            placeholder="Enter your mail/Phone number"
+            autoComplete="current-phone"
+            placeholder="Enter Phone number"
           />
           <p className="text-red-500 text-sm">{errors.email?.message}</p>
           <input

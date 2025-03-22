@@ -14,9 +14,8 @@ const Courses = () => {
     <h2 className=" mt-0 mb-6 flex justify-between">
          <h1 className='text-2xl font-semibold'> Welcome to Your Courses Video</h1>
          
-           {user && user._doc.roles.includes('ADMIN') && (
+           {user && user._doc?.roles.includes('ADMIN') && (
             <button  className="bg-blue-400 py-2 px-3 rounded-2xl hover:bg-indigo-400" onClick={()=>navigate(POSTVIDEO_ROUTE)}>Add Video</button>
-  
 )}
         </h2>
          
@@ -26,9 +25,7 @@ const Courses = () => {
   
     <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-x-2 gap-y-2'>
     <CourseCard/>
-    <CourseCard/>
-    <CourseCard/>
-    <CourseCard/>
+    
     </div>
   </div>
     </>

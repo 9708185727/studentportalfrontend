@@ -6,4 +6,9 @@ const getCourseVideo=async()=>{
   console.log(response)
   return response
 }
-export {getCourseVideo}
+const addCourseVideo=async(data)=>{
+  const response= await axios.post(`${config.BaseApiUrl}/api/add-class`,data)
+  console.log(response)
+  return response
+}
+export {getCourseVideo,addCourseVideo}

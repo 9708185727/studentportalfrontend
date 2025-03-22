@@ -1,9 +1,9 @@
 import axios from "axios"
 import config from "../config/config"
 
-const login=async({email,password})=>{
+const login=async({phone,password})=>{
    
-const response=await axios.post(`${config.BaseApiUrl}/api/auth/login`,{email,password})
+const response=await axios.post(`${config.BaseApiUrl}/api/auth/login`,{phone,password})
 console.log(response)
 return response;
 }

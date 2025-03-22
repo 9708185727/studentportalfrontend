@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 
+import { addCourseVideo } from "../../api/course";
 const PostClassVideo = () => {
   const {
     register,
@@ -20,14 +20,16 @@ const PostClassVideo = () => {
       return;
     }
     
-    try {
-      await axios.post("http://localhost:5000/api/add-class", data);
-      alert("Class video posted successfully!");
-      reset();
-    } catch (error) {
-      console.error("Error posting video:", error);
-      alert("Failed to post video.");
-    }
+   
+      addCourseVideo(data).then((response)=>{
+        alert("Class video posted successfully!");
+        reset();
+      }).catch((eror)=>{
+        console.error("Error posting video:", error);
+        alert("Failed to post video.");
+      })
+     
+   
   };
 
   return (
@@ -42,7 +44,16 @@ const PostClassVideo = () => {
             placeholder="Enter class title"
             className="w-full p-2 border border-gray-300 rounded-md"
           />
-          {errors.title && <p className="text-red-500 text-sm">{errors.title.message}</p>}
+          {errors.title && <p className="text-red-500 text-sm">{errors.title?.message}</p>}
+        </div>
+        <div>
+          <label className="block text-gray-700 font-medium">Subject:</label>
+          <input
+            {...register("subject", { required: "Class subject is required" })}
+            placeholder="Enter class subject"
+            className="w-full p-2 border border-gray-300 rounded-md"
+          />
+          {errors.title && <p className="text-red-500 text-sm">{errors.subject?.message}</p>}
         </div>
 
         <div>
@@ -52,7 +63,7 @@ const PostClassVideo = () => {
             placeholder="Enter batch"
             className="w-full p-2 border border-gray-300 rounded-md"
           />
-          {errors.batch && <p className="text-red-500 text-sm">{errors.batch.message}</p>}
+          {errors.batch && <p className="text-red-500 text-sm">{errors.batch?.message}</p>}
         </div>
         
         <div>
@@ -62,7 +73,7 @@ const PostClassVideo = () => {
             placeholder="Enter day"
             className="w-full p-2 border border-gray-300 rounded-md"
           />
-          {errors.day && <p className="text-red-500 text-sm">{errors.day.message}</p>}
+          {errors.day && <p className="text-red-500 text-sm">{errors.day?.message}</p>}
         </div>
 
         <div>
@@ -72,7 +83,7 @@ const PostClassVideo = () => {
             placeholder="Enter YouTube embed URL"
             className="w-full p-2 border border-gray-300 rounded-md"
           />
-          {errors.videoUrl && <p className="text-red-500 text-sm">{errors.videoUrl.message}</p>}
+          {errors.videoUrl && <p className="text-red-500 text-sm">{errors.videoUrl?.message}</p>}
         </div>
 
         {previewUrl && (

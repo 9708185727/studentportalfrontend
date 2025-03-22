@@ -3,7 +3,7 @@ import { authMenu } from "../constants/navMenu";
 import { IoMdHome } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { PiGreaterThanThin} from "react-icons/pi";
-import { HOME_ROUTE } from "../constants/route";
+import { DASHBOARDSTUDENT_ROUTE, HOME_ROUTE } from "../constants/route";
 import { useSelector } from "react-redux";
 
 const Header = () => {
@@ -13,10 +13,10 @@ const Header = () => {
       <nav className="bg-gray-50 py-4 px-6 flex items-center  space-x-1 border-b">
         <h1 className="text-2xl">{label}</h1>
 
-        <Link to={HOME_ROUTE}>
+        <Link to={ DASHBOARDSTUDENT_ROUTE}>
           <IoMdHome className="text-2xl"/> 
         </Link>
-        <Link to={HOME_ROUTE}>
+        <Link to={ DASHBOARDSTUDENT_ROUTE}>
         <span>Home</span>
         </Link>
        
