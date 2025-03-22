@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import { FaCirclePlay } from "react-icons/fa6";
 import { getCourseVideo } from "../../api/course";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { FaArrowLeft, FaCross } from "react-icons/fa";
+import { RxCross1 } from "react-icons/rx";
 
 const ClassContent = () => {
   const [classData, setClassData] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
   const { user } = useSelector((state) => state.auth);
   const location = useLocation();
-  
+  const navigate=useNavigate()
   // Extract subject from URL
   const queryParams = new URLSearchParams(location.search);
   const subject = queryParams.get("subject");
@@ -39,7 +41,11 @@ const ClassContent = () => {
 
   return (
     <div>
-      <h2 className="text-2xl font-extrabold px-6 mt-6">Watch {subject} Videos</h2>
+     
+      <h2 className="text-2xl font-extrabold px-6 mt-6 flex justify-between">
+        <h1>Watch {subject} Videos</h1>
+      <button onClick={()=>navigate(-1)}><RxCross1  className=""/></button>
+      </h2>
 
       {selectedVideo && (
         <iframe
@@ -52,7 +58,7 @@ const ClassContent = () => {
           allowFullScreen
         ></iframe>
       )}
-
+ 
       <div className="ml-6 text-xl">
         {classData.map((video, index) => (
           <button
